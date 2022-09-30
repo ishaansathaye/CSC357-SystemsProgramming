@@ -1,0 +1,7 @@
+The quick
+brown fox
+jumped over
+the lazy dog.
+Testing task6
+First Lab
+Working
