@@ -6,7 +6,8 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
-#define SIZE 1
+#include <stdlib.h>
+#define SIZE 8192
 
 int main(int argc, char *argv[]) {
 
@@ -18,8 +19,5 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
     fread(buf, SIZE, 1, fp);
-
 }
-
-
 // 1, 2, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, and 8192
