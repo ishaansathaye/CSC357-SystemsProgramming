@@ -18,6 +18,7 @@ int main(int argc, char *argv[]) {
         perror(argv[1]);
         exit(1);
     }
+    // Use while loop to read
     fread(buf, SIZE, 1, fp);
 }
 // 1, 2, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, and 8192

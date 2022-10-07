@@ -12,10 +12,10 @@ int main(int argc, char *argv[]) {
 
     int fd;
     char buf[SIZE];
-
     if ((fd = open(argv[1], O_RDONLY)) < 0) {
         perror(argv[1]);
     }
+    // Use while loop to read
     read(fd, buf, SIZE);
 
 }
