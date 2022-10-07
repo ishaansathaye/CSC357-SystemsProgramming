@@ -19,6 +19,6 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
     // Use while loop to read
-    fread(buf, SIZE, 1, fp);
+    while (fread(buf, 1, SIZE, fp) > 0) {}
 }
 // 1, 2, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, and 8192

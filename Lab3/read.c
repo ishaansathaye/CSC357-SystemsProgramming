@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
-#define SIZE 8192
+#define SIZE 1
 
 int main(int argc, char *argv[]) {
 
@@ -16,11 +16,9 @@ int main(int argc, char *argv[]) {
         perror(argv[1]);
     }
     // Use while loop to read
-    read(fd, buf, SIZE);
+    while (read(fd, buf, SIZE) > 0) {}
 
 }
 
 
 // 1, 2, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, and 8192
-// All 0.03s
-// Horizontal Line
