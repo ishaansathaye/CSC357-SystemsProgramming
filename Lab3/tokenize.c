@@ -6,7 +6,7 @@
 #include <string.h>
 
 void tokenize(FILE *file) {
-    const char delim[] = "  \n \t \r \v \v \f";
+    const char delim[] = "  \n \t \r \v \f";
     char *line = NULL;
     size_t len = 0;
     ssize_t read;
