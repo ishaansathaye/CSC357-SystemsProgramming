@@ -22,5 +22,4 @@ int main(int argc, char *argv[]) {
 }
 
 // 1, 2, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, and 8192
-// fread better for read 1 byte at a time and then significantly better
-// the system call for the other bytes sizes too.
+// fread better for read 1 byte at a time, so for smaller bytes
