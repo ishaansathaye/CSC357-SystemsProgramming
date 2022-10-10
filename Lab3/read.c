@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
+#include <stdlib.h>
 #define SIZE 8192
 
 int main(int argc, char *argv[]) {
@@ -13,8 +14,10 @@ int main(int argc, char *argv[]) {
     char buf[SIZE];
     if ((fd = open(argv[1], O_RDONLY)) < 0) {
         perror(argv[1]);
+        exit(1);
     }
     while ((read(fd, buf, SIZE)) > 0) {}
+    close(fd);
     return 0;
 }
 

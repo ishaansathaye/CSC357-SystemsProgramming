@@ -10,7 +10,6 @@
 #define SIZE 8192
 
 int main(int argc, char *argv[]) {
-
     char buf[SIZE];
     FILE *fp = fopen(argv[1], "r");
     if (fp == NULL) {
@@ -18,6 +17,10 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
     while ((fread(buf, SIZE, 1, fp)) > 0) {}
+    fclose(fp);
+    return 0;
 }
 
 // 1, 2, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, and 8192
+// fread better for read 1 byte at a time and then significantly better
+// the system call for the other bytes sizes too.
