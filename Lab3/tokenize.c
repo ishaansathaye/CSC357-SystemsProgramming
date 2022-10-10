@@ -6,14 +6,15 @@
 #include <string.h>
 
 void tokenize(FILE *file) {
-    const char delim[] = "  \n \t \r \v \f";
+    const char delim[] = "  \n \t \r \v \v \f";
     char *line = NULL;
     size_t len = 0;
     ssize_t read;
     char *token;
     while ((read = getline(&line, &len, file)) > 0) {
-        while ((token = strsep(&line, delim)) != NULL) {
-            printf("%s\n", token);
+        char *temp = line;
+        while ((token = strsep(&temp, delim)) != NULL && (temp != NULL)) {
+            printf("'%s'\n", token);
         }
     }
     free(line);
