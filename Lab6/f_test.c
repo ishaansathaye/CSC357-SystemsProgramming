@@ -6,9 +6,12 @@ For the odd numbers, use “%d\n” as the format string for printf. For the eve
 
 Run the program with a large enough value for N to observe an interleaving in the output.*/
 
+#define _GNU_SOURCE
+#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
+#include <sys/wait.h>
+#include <sys/resource.h>
 
 void limit_fork(rlim_t max_procs)
 {
@@ -56,7 +59,7 @@ void child_parent(int n) {
 }
 
 int main(int argc, char *argv[]) {
-    limit_fork(300);
+    limit_fork(500); // 500 for Mac, 100 for servers
     /* continue with program logic here */
     int n = atoi(argv[1]);
     child_parent(n);
