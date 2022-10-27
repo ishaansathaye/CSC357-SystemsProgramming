@@ -1,3 +1,14 @@
+/*
+Write a program named fe_test. 
+This program will behave similarly to the program from the first part, 
+    but will use one of the "exec" system calls to execute the programs written in the Task 2. 
+The parent should fork two child processes. 
+One child process will "exec" the odds program. 
+The other will "exec" the evens program. 
+The parent process should properly wait for both child processes to terminate 
+    but allow them to execute concurrently (i.e., wait after both children have been created).
+*/
+
 /* Write a program named f_test. This program must take a single integer, N, as a command-line argument. 
 This program must fork a child process. The child must print the odd numbers from 1 to N (inclusive) and then exit(), while the parent prints the even numbers from 1 to N (inclusive). 
 The parent process should properly wait for the child process to terminate.
