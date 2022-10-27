@@ -43,7 +43,11 @@ void odd_child(char *n) {
 
 void even_child(char *n) {
     char *path = "../Task2_OddsEvens/evens";
-    execl(path, path, n, NULL);
+    int result = execl(path, path, n, NULL);
+    if (result == -1) {
+        perror("execl");
+        exit(-1);
+    }
 }
 
 void process(char *n) {
@@ -68,7 +72,7 @@ void process(char *n) {
 }
 
 int main(int argc, char *argv[]) {
-    limit_fork(500); // 500 for Mac, 100 for servers
+    limit_fork(100); // 500 for Mac, 100 for servers
     /* continue with program logic here */
     if (argc != 2) {
         fprintf(stderr, "Usage: %s N\n", argv[0]);
