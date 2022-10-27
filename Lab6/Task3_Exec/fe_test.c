@@ -9,14 +9,6 @@ The parent process should properly wait for both child processes to terminate
     but allow them to execute concurrently (i.e., wait after both children have been created).
 */
 
-/* Write a program named f_test. This program must take a single integer, N, as a command-line argument. 
-This program must fork a child process. The child must print the odd numbers from 1 to N (inclusive) and then exit(), while the parent prints the even numbers from 1 to N (inclusive). 
-The parent process should properly wait for the child process to terminate.
-
-For the odd numbers, use “%d\n” as the format string for printf. For the even numbers, use “\t%d\n” as the format string for printf.
-
-Run the program with a large enough value for N to observe an interleaving in the output.*/
-
 #define _GNU_SOURCE
 #include <unistd.h>
 #include <stdio.h>
@@ -40,33 +32,39 @@ void limit_fork(rlim_t max_procs)
     }
 }
 
-void child(int n) {
-    int i;
-    for (i = 1; i <= n; i += 2) {
-        printf("%d\n", i);
-    }
-    exit(0);
-}
-
-void parent(int n) {
-    wait(0);
-    int i;
-    for (i = 2; i <= n; i += 2) {
-        printf("\t%d\n", i);
+void odd_child(char *n) {
+    char *path = "../Task2_OddsEvens/odds";
+    int result = execl(path, path, n, NULL);
+    if (result == -1) {
+        perror("execl");
+        exit(-1);
     }
 }
 
-void child_parent(int n) {
-    pid_t pid;
-    if ((pid = fork()) < 0) {
+void even_child(char *n) {
+    char *path = "../Task2_OddsEvens/evens";
+    execl(path, path, n, NULL);
+}
+
+void process(char *n) {
+    pid_t pid1, pid2;
+    int status1, status2;
+    if ((pid1 = fork()) < 0) {
         perror("fork");
         exit(-1);
-    } else if (pid == 0) {
-        child(n);
+    } else if (pid1 == 0) {
+        odd_child(n);
     } else {
-        parent(n);
+        if ((pid2 = fork()) < 0) {
+            perror("fork");
+            exit(-1);
+        } else if (pid2 == 0) {
+            even_child(n);
+        } else {
+            waitpid(pid1, &status1, 0);
+            waitpid(pid2, &status2, 0);
+        }
     }
-
 }
 
 int main(int argc, char *argv[]) {
@@ -76,7 +74,7 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Usage: %s N\n", argv[0]);
         exit(-1);
     }
-    int n = atoi(argv[1]);
-    child_parent(n);
+    char *n = argv[1];
+    process(n);
     return 0;
 }
