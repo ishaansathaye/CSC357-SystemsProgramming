@@ -29,6 +29,15 @@ void limit_fork(rlim_t max_procs)
     }
 }
 
+pid_t spawn(void) {
+    pid_t pid;
+    if ((pid = fork()) < 0) {
+        perror("fork");
+        exit(-1);
+    }
+    return pid;
+}
+
 void child(int n) {
     int i;
     for (i = 1; i <= n; i += 2) {
@@ -46,11 +55,7 @@ void parent(int n) {
 }
 
 void child_parent(int n) {
-    pid_t pid;
-    if ((pid = fork()) < 0) {
-        perror("fork");
-        exit(-1);
-    } else if (pid == 0) {
+    if (spawn() == 0) {
         child(n);
     } else {
         parent(n);

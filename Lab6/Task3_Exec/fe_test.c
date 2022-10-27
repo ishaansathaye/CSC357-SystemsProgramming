@@ -32,47 +32,50 @@ void limit_fork(rlim_t max_procs)
     }
 }
 
-void odd_child(char *n) {
-    char *path = "../Task2_OddsEvens/odds";
-    int result = execl(path, path, n, NULL);
-    if (result == -1) {
-        perror("execl");
+pid_t spawn(void) {
+    pid_t pid;
+    if ((pid = fork()) < 0) {
+        perror("fork");
         exit(-1);
     }
+    return pid;
+}
+
+void odd_child(char *n) {
+    char *path = "../Task2_OddsEvens/odds";
+    execl(path, path, n, NULL);
+    perror("execl");
+    exit(-1);
 }
 
 void even_child(char *n) {
     char *path = "../Task2_OddsEvens/evens";
-    int result = execl(path, path, n, NULL);
-    if (result == -1) {
-        perror("execl");
-        exit(-1);
-    }
+    execl(path, path, n, NULL);
+    perror("execl");
+    exit(-1);
+}
+
+void parent() {
+    wait(0);
+    wait(0);
 }
 
 void process(char *n) {
-    pid_t pid1, pid2;
-    int status1, status2;
-    if ((pid1 = fork()) < 0) {
-        perror("fork");
-        exit(-1);
-    } else if (pid1 == 0) {
+    if (spawn() == 0) {
         odd_child(n);
+        exit(0);
     } else {
-        if ((pid2 = fork()) < 0) {
-            perror("fork");
-            exit(-1);
-        } else if (pid2 == 0) {
+        if (spawn() == 0) {
             even_child(n);
+            exit(0);
         } else {
-            waitpid(pid1, &status1, 0);
-            waitpid(pid2, &status2, 0);
+            parent();
         }
     }
 }
 
 int main(int argc, char *argv[]) {
-    limit_fork(100); // 500 for Mac, 100 for servers
+    limit_fork(500); // 500 for Mac, 100 for servers
     /* continue with program logic here */
     if (argc != 2) {
         fprintf(stderr, "Usage: %s N\n", argv[0]);

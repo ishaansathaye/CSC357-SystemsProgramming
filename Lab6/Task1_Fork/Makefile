@@ -8,7 +8,7 @@ all : $(MAIN)
 $(MAIN) : $(OBJS)
 	$(CC) $(CFLAGS) -o $(MAIN) $(OBJS)
 
-fs_emulator.o : f_test.c
+f_test.o : f_test.c
 	$(CC) $(CFLAGS) -c f_test.c
 
 clean :

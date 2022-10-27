@@ -1,15 +1,15 @@
 CC = gcc
 CFLAGS = -Wall -std=c99 -pedantic -g
-MAIN = fe_test
-OBJS = fe_test.o
+MAIN = to_file
+OBJS = to_file.o
 
 all : $(MAIN)
 
 $(MAIN) : $(OBJS)
 	$(CC) $(CFLAGS) -o $(MAIN) $(OBJS)
 
-fe_test.o : fe_test.c
-	$(CC) $(CFLAGS) -c fe_test.c
+to_file.o : to_file.c
+	$(CC) $(CFLAGS) -c to_file.c
 
 clean :
 	rm *.o $(MAIN) core
