@@ -4,6 +4,7 @@
 ### [Assignment 1](https://github.com/keen-cp/cpe-357-assignment-1-ishaansathaye)
 ### [Assignment 2](https://github.com/keen-cp/cpe-357-assignment-2-ishaansathaye)
 ### [Assignment 3](https://github.com/keen-cp/cpe-357-assignment-3-ishaansathaye)
+### [Assignment 4](https://github.com/keen-cp/cpe-357-assignment-4-ishaansathaye)
 
 ## Labs
 ### [Lab 1](https://github.com/keen-cp/cpe-357-lab-1-ishaansathaye)
