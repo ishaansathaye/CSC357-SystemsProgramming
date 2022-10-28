@@ -47,11 +47,11 @@ void child(int n) {
 }
 
 void parent(int n) {
-    wait(0);
     int i;
     for (i = 2; i <= n; i += 2) {
         printf("\t%d\n", i);
     }
+    wait(0);
 }
 
 void child_parent(int n) {
