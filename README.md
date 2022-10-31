@@ -15,4 +15,4 @@
 ### [Lab 5](Lacuna)
 ### [Lab 6](./Lab6)
 - [Assignment Details](https://canvas.calpoly.edu/courses/83933/assignments/562934)
-### [Lab 7](https://github.com/keen-cp/cpe-357-lab-7-ishaansathaye)
+### [Lab 7](https://github.com/keen-cp/cpe-357-lab-8-ishaansathaye)
