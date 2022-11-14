@@ -4,7 +4,7 @@
 #include <netdb.h>
 #include <unistd.h>
 
-#define PORT 1032
+#define PORT 1034
 
 #define MIN_ARGS 2
 #define MAX_ARGS 2
