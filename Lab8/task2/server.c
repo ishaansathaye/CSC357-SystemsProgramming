@@ -86,10 +86,10 @@ void run_service(int fd)
                 printf("Connection established\n");
                 handle_request(nfd);
                 printf("Connection closed\n");
+                exit(0);
             }
             else
             {
-                setup(SIGCHLD);
                 close(nfd);
             }
         }
@@ -101,6 +101,8 @@ int main(void)
     int fd = create_service(PORT);
     // printf("fd: %d\n", fd); - check if port is open
 
+
+    setup(SIGCHLD);
     if (fd != -1)
     {
         printf("listening on port: %d\n", PORT);

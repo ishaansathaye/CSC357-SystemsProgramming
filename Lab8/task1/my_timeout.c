@@ -29,6 +29,7 @@ pid_t spawn(void) {
 void handle_action(int sig) {
     printf("killing child...\n");
     kill(pid, sig);
+    exit(1);
 }
 
 void setup(int signo) {
