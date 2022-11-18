@@ -12,6 +12,8 @@
 
 ### [Assignment 5](https://github.com/keen-cp/cpe-357-assignment-5-ishaansathaye)
 
+### [Assignment 6](https://github.com/keen-cp/cpe-357-assignment-6-ishaansathaye)
+
 ## Labs
 
 ### [Lab 1](https://github.com/keen-cp/cpe-357-lab-1-ishaansathaye)
@@ -35,3 +37,5 @@
 ### [Lab 8](./Lab8)
 
 - [Assignment Details](https://canvas.calpoly.edu/courses/83933/assignments/562936)
+
+### [Lab 9](https://github.com/keen-cp/cpe-357-lab-9-ishaansathaye)
